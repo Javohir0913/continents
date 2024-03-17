@@ -2,37 +2,38 @@
 {% load static %}
 
 {% block title %}
-	Create
+    Create
 {% endblock %}
 
 {% block top_link %}
     {% for continent in continents %}
-    	<li>
+        <li>
             <a class="dropdown-item" href="{% url 'continent_show' continent.id %}">{{ continent.continent_name }}</a>
         </li>
     {% endfor %}
 {% endblock %}
 
 {% block content %}
-        <form action="" method="post">
-            {% csrf_token %}
-            <fieldset>
-                <p>
-                    <label for="name">Continent name: </label>
-                    <input type="text" name="name" required>
-
-                    <label for="annotations">annotations: </label>
-                    <input type="text" name="annotations" required>
-                </p>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <label for="description">description: </label>
-                    <input type="text" name="description" required>
-                </p>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <label for="image">annotations: </label>
-                    <input name="image" type="file" required>
-                </p>
-            </fieldset>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="submit" value="Create Theme">
-        </form>
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <fieldset>
+        <p>
+            <label for="name">Continent name: </label>
+            <input type="text" name="name" required>
+        </p>
+        <p>
+            <label for="annotations">Annotations: </label>
+            <input type="text" name="annotations" required>
+        </p>
+        <p>
+            <label for="description">Description: </label>
+            <input type="text" name="description" required>
+        </p>
+        <p>
+            <label for="image">Image: </label>
+            <input name="image" type="file" required>
+        </p>
+    </fieldset>
+    <input type="submit" value="Create Theme">
+</form>
 {% endblock %}

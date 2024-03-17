@@ -5,7 +5,7 @@ from django.db import models
 class Continent(models.Model):
     continent_name = models.CharField(max_length=100, verbose_name='Continent Name', unique=True)
     continent_description = models.TextField(verbose_name='Continent Description')
-    continent_image = models.ImageField(upload_to='images/', verbose_name='Continent Image')
+    continent_image = models.ImageField(upload_to='', verbose_name='Continent Image')
     continent_annotations = models.TextField(max_length=150, verbose_name='Continent Annotations')
     continent_date_created = models.DateTimeField(auto_now_add=True, verbose_name='Continent Date')
 
