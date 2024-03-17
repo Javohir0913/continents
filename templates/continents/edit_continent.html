@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Edit
+{% endblock %}
+
+{% block top_link %}
+    {% for continent in continents %}
+    	<li>
+            <a class="dropdown-item" href="{% url 'continent_show' continent.id %}">{{ continent.continent_name }}</a>
+        </li>
+    {% endfor %}
+{% endblock %}
+
+{% block content %}
+        <form action="" method="post">
+            {% csrf_token %}
+            <fieldset>
+                <p>
+                    <label for="name">Continent name: </label>
+                    <input type="text" name="name" value="{{ continent.continent_name }}">
+
+                    <label for="annotations">annotations: </label>
+                    <input type="text" name="annotations" value="{{ continent.continent_annotations }}">
+                </p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label for="description">description: </label>
+                    <input type="text" name="description"  value="{{ continent.continent_description }}">
+                </p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label for="image">annotations: </label>
+                    <input name="image" type="file" value="{{ continent.continent_image }}">
+                </p>
+            </fieldset>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="submit" value="Create Theme">
+        </form>
+{% endblock %}
